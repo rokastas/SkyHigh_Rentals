@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "drones#index"
+
+  # Defines the routes for the drones resource
+  resources :drones, only: [:index, :show]
 end
