@@ -1,9 +1,13 @@
-<body class="bg-black d-flex align-objects-center my-4">
+<%#-- update booking --%>
+<div class="bg-black d-flex align-objects-center">
   <div class="container h-100">
-    <h2>Update Your Booking:</h2>
       <div class="card rounded-4 bg-dark bg-opacity-50 text-secondary my-4">
         <div class="d-flex justify-content-center align-items-center h-50">
-          <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="500">
+              <%# <% if @drone.photo.attached? %>
+              <%# <%= cl_image_tag @drone.photo.key, crop: :fill %>
+              <%# <% else %>
+              <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="400">
+              <%# <% end %>
         </div>
         <div class="px-3">
           <h2 class="my-3"><%= @drone.model %></h2>

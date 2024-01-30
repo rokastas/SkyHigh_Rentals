@@ -1,22 +1,33 @@
 <div class="background-black-gradient">
   <div class="container d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
     <%#-- drone card --%>
-    <div class="my-2">
+    <div class="my-2 text-center">
       <h2><%= @drone.model %></h2>
 
       <div class="d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
-        <div class="h-50">
-          <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" class="w-100">
+        <div class="h-50 mx-auto">
+           <%# <% if @drone.photo.attached? %>
+              <%# <%= cl_image_tag @drone.photo.key, crop: :fill %>
+           <%# <% else %>
+              <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="400">
+           <%# <% end %>
+        </div>
+        <div class="mt-3">
+
+          <div class="card text-white bg-dark">
+            <div class="card-body text-center">
+              <p class="card-text">Brand: <%= @drone.brand %></p>
+              <p class="card-text">Description: <%= @drone.description %></p>
+              <p class="card-text">Price: <%= @drone.price %>0 €/day</p>
+              <p class="card-text">Flying Time: <%= @drone.time_in_air %> min</p>
+              <p class="card-text">Weight: <%= @drone.weight %> g</p>
+              <p class="card-text">Category: <%= @drone.category %></p>
+            </div>
+          </div>
         </div>
 
-        <p>Brand: <%= @drone.brand %></p>
-        <p>Discription: <%= @drone.description %></p>
-        <p>Price: <%= @drone.price %>€ p/day</p>
-        <p>Flying Time: <%= @drone.time_in_air %> min</p>
-        <p>Weight: <%= @drone.weight %> g</p>
-        <p>Category: <%= @drone.category %></p>
+        <div class="d-flex flex-column mt-3">
 
-        <div class="d-flex flex-column mb-3">
           <div class="btn btn-outline-secondary p-2"><%= link_to 'Book', new_drone_booking_path(@drone) %></div>
         </div>
       </div>

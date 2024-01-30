@@ -36,10 +36,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:from_date, :to_date, :accepted)
   end
-
-  private
-
-  def booking_params
-    params.require(:booking).permit(:from_date, :to_date)
-  end
 end
