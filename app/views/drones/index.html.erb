@@ -1,0 +1,11 @@
+<h1>All Drones</h1>
+
+<div class="container">
+  <% @drones.each do |drone| %>
+    <div class="card">
+      <h2><%= drone.model %></h2>
+      <p><%= drone.description %></p>
+      <!-- Add more drone details here -->
+    </div>
+  <% end %>
+</div>
