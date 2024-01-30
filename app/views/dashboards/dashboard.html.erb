@@ -1,27 +1,37 @@
+<div class="background-black-gradient">
 
-<div class="container-fluid bg-dark text-light">
-  <h1 class="text-center mt-4 mb-4">Dashboard</h1>
-  <% @all_drones_grouped_by_user.each do |user, drones| %>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
+  <div class="banner">
+    <div class="container">
+      <div class="d-flex flex-column">
+        <h1>Dashboard</h1>
+      </div>
+    </div>
+  </div>
+
+ <div class="container pt-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
+    <% @all_drones_grouped_by_user.each do |user, drones| %>
       <% drones.each do |drone| %>
         <div class="col mb-4">
-          <div class="d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 p-2 border">
+          <div class="card h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
             <div class="card-body">
               <h5 class="card-title">User: <%= user.first_name %> <%= user.last_name %></h5>
-              <p class="card-text">
+              <div class="card-text">
                 <strong>Model:</strong> <%= drone.model %><br>
                 <strong>Description:</strong> <%= drone.description %><br>
                 <strong>Category:</strong> <%= drone.category %><br>
                 <strong>Price:</strong> <%= drone.price %><br>
                 <strong>Time in Air:</strong> <%= drone.time_in_air %><br>
                 <strong>Weight:</strong> <%= drone.weight %><br>
-              </p>
+              </div>
             </div>
           </div>
         </div>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+</div>
+
 </div>
 
 
