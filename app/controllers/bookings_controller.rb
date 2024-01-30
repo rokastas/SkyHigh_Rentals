@@ -23,12 +23,18 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-
-    if @booking.update(booking_params)
-      redirect_to drone_path(@drone), notice: 'Booking was successfully updated.'
+    if @booking.update(accepted: params[:accepted])
+      redirect_to dashboard_path, notice: 'Booking was successfully accepted.'
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.delete
+
+    redirect_to dashboards_path
   end
 
   private
