@@ -1,11 +1,11 @@
-<h1>All Drones</h1>
-
 <div class="container">
+<h1>All Drones</h1>
   <% @drones.each do |drone| %>
     <div class="card">
-      <h2><%= drone.model %></h2>
-      <p><%= drone.description %></p>
-      <!-- Add more drone details here -->
+        <%= link_to(drone_path(drone)) do %>
+        <h2><%= drone.model %></h2>
+        <% end %>
+        <p><strong>Description:</strong> <%= drone.description %></p>
     </div>
   <% end %>
 </div>

@@ -1,0 +1,20 @@
+<div class="container">
+<div class="container mt-3">
+    <h2><%= @drone.model %></h2>
+    <div class="card-show-drone">
+    <p class ="w-100">Brand: <%= @drone.brand %></p>
+    <p>Discription: <%= @drone.description %></p>
+    <p>Price: <%= @drone.price %>€ p/day</p>
+    <p>Flying Time: <%= @drone.time_in_air %> min</p>
+    <p>Weight: <%= @drone.weight %> g</p>
+    <p>Category: <%= @drone.category %></p>
+    <div class="btn btn-primary">
+      <%= link_to 'Home', root_path %>
+    </div>
+
+  </div>
+
+</div>
+
+
+</div>
