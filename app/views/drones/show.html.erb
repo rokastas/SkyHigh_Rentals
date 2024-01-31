@@ -1,47 +1,25 @@
-<div class="container-fluid background-black-gradient text-light">
-  <div class="navbar justify-content-between">
-    <div class="d-flex flex-row">
-      <a href="">
-        <img class="navbar-brand" src="https://st3.depositphotos.com/27269280/36592/v/450/depositphotos_365929444-stock-illustration-drone-logo-concept-design-arial.jpg" alt="Drone logo" height="70px">
-        <a class="align-self-center navbar-link">Sky High</a>
-      </a>
-    </div>
-    <div class="links mx-4">
-      <a href="#" class="navbar-link">All Drones</a>
-      <a href="#" class="navbar-link">Contact</a>
-      <a href="#" class="navbar-link">Log In</a>
-    </div>
-  </div>
+<div class="background-black-gradient">
+  <div class="container d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
+    <%#-- drone card --%>
+    <div class="my-2">
+      <h2><%= @drone.model %></h2>
 
-  <div class="banner">
-    <div class="container">
-      <div class="d-flex flex-column">
-        <h1>Dashboard</h1>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-      <% @all_drones_grouped_by_user.each do |user, drones| %>
-        <div class="col mb-4">
-          <div class="card bg-dark text-light">
-            <div class="card-body">
-              <h5 class="card-title">User: <%= user.first_name %> <%= user.last_name %></h5>
-              <p class="card-text">
-                <strong>Model:</strong> <%= drones.first.model %><br>
-                <strong>Description:</strong> <%= drones.first.description %><br>
-                <strong>Category:</strong> <%= drones.first.category %><br>
-                <strong>Price:</strong> <%= drones.first.price %><br>
-                <strong>Time in Air:</strong> <%= drones.first.time_in_air %><br>
-                <strong>Weight:</strong> <%= drones.first.weight %><br>
-              </p>
-            </div>
-          </div>
+      <div class="d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
+        <div class="h-50">
+          <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" class="w-100">
         </div>
-      <% end %>
+
+        <p>Brand: <%= @drone.brand %></p>
+        <p>Discription: <%= @drone.description %></p>
+        <p>Price: <%= @drone.price %>€ p/day</p>
+        <p>Flying Time: <%= @drone.time_in_air %> min</p>
+        <p>Weight: <%= @drone.weight %> g</p>
+        <p>Category: <%= @drone.category %></p>
+
+        <div class="d-flex flex-column mb-3">
+          <div class="btn btn-outline-secondary p-2"><%= link_to 'Book', new_drone_booking_path(@drone) %></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
