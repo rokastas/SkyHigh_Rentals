@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking.drone = @drone
     @booking.user = current_user
     if @booking.save
-      redirect_to drones_path
+      redirect_to dashboard_path
     else
       render :new
     end
