@@ -8,6 +8,8 @@ class DronesController < ApplicationController
 
   def show
     @drone = Drone.find(params[:id])
+    @drones = Drone.all
+    @same_category_drones = @drones.where(category: Drone.find(params[:id]).category)
   end
 
   def new

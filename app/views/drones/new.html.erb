@@ -1,25 +1,46 @@
-<div class="bg-black d-flex align-objects-center">
-  <div class="container h-100">
-    <div class="card rounded-4 bg-dark bg-opacity-50 text-secondary my-4">
-      <div class="d-flex justify-content-center align-items-center h-50">
-        <img class="" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture">
+<div class="background-black-gradient h-100 d-flex align-objects-center">
+  <div class="container d-flex flex-column rounded-4 bg-dark bg-opacity-50 text-secondary p-2 my-5">
+    <div class="d-flex flex-row text-secondary p-3">
+
+      <div class="col-6 my-auto">
+          <%# <% if @drone.photo.attached? %>
+            <%# <%= cl_image_tag @drone.photo.key, crop: :fill %>
+          <%# <% else %>
+            <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="100%">
+          <%# <% end %>
       </div>
-      <div class="px-3">
-        <h2 class="my-3">Upload a new drone:</h2>
-        <div class="my-3">
-          <%= simple_form_for [@user, @drone] do |f| %>
-            <%= f.input :brand %>
-            <%= f.input :model %>
-            <%= f.input :price %>
-            <%= f.input :time_in_air %>
-            <%= f.input :description %>
-            <%= f.input :weight %>
-            <%= f.input :category, collection: Drone::CATEGORY %>
-            <%= f.input :photo, as: :file %>
-            <div class="btn btn-primary"><%= f.button :submit %></div>
+
+      <div class="card col-6 text-white bg-dark bg-opacity-50 p-2">
+        <div class="card-body d-flex flex-column text-start">
+          <h1>Add a new drone</h1>
+          <%= simple_form_for [@user, @drone], defaults: {label: false}, html: { class: "flex-grow-1 text-secondary"} do |f| %>
+            <div class="h-100 d-flex flex-column">
+              <div>
+                <div class="my-2"><%= f.label :brand, "BRAND:" %></div>
+                <%= f.input :brand, input_html: { placeholder: "DJI" }  %>
+                <div class="my-2"><%= f.label :model, "MODEL:" %></div>
+                <%= f.input :model, input_html: { placeholder: "Nimbus 3000" }  %>
+                <div class="my-2"><%= f.label :price, "PRICE PER DAY:" %></div>
+                <%= f.input :price, input_html: { placeholder: "30 €" } %>
+                <div class="my-2"><%= f.label :time_in_air, "TIME IN AIR:" %></div>
+                <%= f.input :time_in_air, input_html: { placeholder: "45 min" }  %>
+                <div class="my-2"><%= f.label :description, "DESCRIPTION:" %></div>
+                <%= f.input :description, input_html: { placeholder: "Fast drone with great camera capabilities" }  %>
+                <div class="my-2"><%= f.label :weight, "WEIGHT:" %></div>
+                <%= f.input :weight, input_html: { placeholder: "450 g" }  %>
+                <div class="my-2"><%= f.label :category, "CATEGORY:" %></div>
+                <%= f.input :category, collection: Drone::CATEGORY %>
+                <div class="my-2"><%= f.label :brand, "IMG:" %></div>
+                <%= f.input :photo, as:file { placeholder: "Your File" }  %>
+              </div>
+              <div class="mt-auto">
+                <%= f.submit 'Add', class: "btn w-100 rounded-4 btn-secondary p-2 mt-3" %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
+
     </div>
   </div>
 </div>

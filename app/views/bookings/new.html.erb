@@ -1,24 +1,35 @@
 <%#-- new booking --%>
-<div class="bg-black d-flex align-objects-center">
-  <div class="container h-100">
-    <div class="card rounded-4 bg-dark bg-opacity-50 text-secondary my-4">
-      <div class="d-flex justify-content-center align-items-center h-50">
-              <%# <% if @drone.photo.attached? %>
-              <%# <%= cl_image_tag @drone.photo.key, crop: :fill %>
-              <%# <% else %>
-              <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="400">
-              <%# <% end %>
+<div class="background-black-gradient h-100 d-flex align-objects-center">
+  <div class="container d-flex flex-column rounded-4 bg-dark bg-opacity-50 text-secondary p-2 my-5">
+    <div class="d-flex flex-row text-secondary p-3">
+
+      <div class="col-6 mx-auto">
+          <%# <% if @drone.photo.attached? %>
+            <%# <%= cl_image_tag @drone.photo.key, crop: :fill %>
+          <%# <% else %>
+            <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="100%">
+          <%# <% end %>
       </div>
-      <div class="px-3">
-        <h2 class="my-3"><%= @drone.model %></h2>
-        <div class="my-3">
-          <%= simple_form_for [@drone, @booking] do |f| %>
-              <%= f.input :from_date, as: :string, input_html: { data: { controller: "datepicker" } }  %>
-              <%= f.input :to_date, as: :string, input_html: { data: { controller: "datepicker" } }   %>
-            <div class="btn btn-primary"><%= f.button :submit %></div>
+
+      <div class="card col-6 text-white bg-dark bg-opacity-50 p-2">
+        <div class="card-body d-flex flex-column text-start">
+          <h1>Book <%= @drone.model %></h1>
+          <%= simple_form_for [@drone, @booking], defaults: {label: false}, html: { class: "flex-grow-1 text-secondary"} do |f| %>
+            <div class="h-100 d-flex flex-column">
+              <div>
+                <div class="my-2"><%= f.label :from_date, "FROM:" %></div>
+                <%= f.input :from_date, as: :string, input_html: { data: { controller: "datepicker" }, placeholder: Date.today.strftime('%Y-%m-%d') } %>
+                <div class="mt-4 mb-2"><%= f.label :from_date, "TO:" %></div>
+                <%= f.input :to_date, as: :string, input_html: { data: { controller: "datepicker" }, placeholder: Date.today.strftime('%Y-%m-%d') } %>
+              </div>
+              <div class="mt-auto">
+                <%= f.submit 'Book', class: "btn w-100 rounded-4 btn-secondary p-2" %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
+
     </div>
   </div>
 </div>
