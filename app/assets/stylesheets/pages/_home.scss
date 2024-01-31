@@ -1,1 +1,9 @@
 // Specific CSS for your home-page
+.background-black-gradient {
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(22,22,22,1) 75%, rgba(48,48,48,1) 100%);
+}
+
+p, h2 {
+  color: rgba(230, 230, 230, 0.936);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
