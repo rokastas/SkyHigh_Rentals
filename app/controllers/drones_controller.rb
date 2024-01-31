@@ -27,7 +27,7 @@ class DronesController < ApplicationController
   private
 
   def drone_params
-    params.require(:drone).permit(:price, :brand, :model, :time_in_air, :description, :weight, :category, :availability)
+    params.require(:drone).permit(:price, :brand, :model, :time_in_air, :description, :weight, :category, :availability, :photo)
   end
 
   def filter_drones

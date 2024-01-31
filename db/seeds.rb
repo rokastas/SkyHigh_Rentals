@@ -31,7 +31,7 @@ drone_brands = ['DJI', 'Parrot', 'Autel Robotics', 'Yuneec', 'Skydio', 'Holy Sto
 20.times do
   drone_description = "#{Faker::Hacker.verb} #{Faker::Hacker.noun} with #{Faker::Hacker.adjective} features"
 
-  Drone.create(
+  drone = Drone.create(
     price: rand(10..100),
     brand: drone_brands.sample,
     model: Faker::Drone.name,
@@ -41,6 +41,7 @@ drone_brands = ['DJI', 'Parrot', 'Autel Robotics', 'Yuneec', 'Skydio', 'Holy Sto
     category: Drone::CATEGORY.sample,
     user: User.all.sample
   )
+  # drone.photo.attahc
 end
 
 30.times do

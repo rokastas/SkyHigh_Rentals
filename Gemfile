@@ -2,6 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+# Adding Photos
+gem "cloudinary"
+
 # Authentification
 gem "devise"
 
