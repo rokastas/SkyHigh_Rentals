@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dashboards/user_dashboard'
+  get 'dashboards/owner_dashboard'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,5 +12,9 @@ Rails.application.routes.draw do
   root "drones#index"
 
   # Defines the routes for the drones resource
-  resources :drones, only: [:index, :show]
+  resources :drones, only: [:index, :show] do
+    resources :bookings, only: [:new, :create]
+  end
+  get '/dashboard', to: 'dashboards#dashboard', as: :dashboard
+    resources :bookings, only: [:edit, :update]
 end

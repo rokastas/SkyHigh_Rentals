@@ -1,11 +1,48 @@
-<h1>All Drones</h1>
-
-<div class="container">
-  <% @drones.each do |drone| %>
-    <div class="card">
-      <h2><%= drone.model %></h2>
-      <p><%= drone.description %></p>
-      <!-- Add more drone details here -->
+<body class="background-black-gradient">
+  <div class="navbar justify-content-between">
+    <div class="d-flex flex-row">
+      <a href="">
+        <img class="navbar-brand" src="https://st3.depositphotos.com/27269280/36592/v/450/depositphotos_365929444-stock-illustration-drone-logo-concept-design-arial.jpg" alt="Drone logo" height="70px">
+        <a class="align-self-center navbar-link">Sky High</a>
+      </a>
     </div>
-  <% end %>
-</div>
+    <div class="links mx-4">
+      <a href="#" class="navbar-link">All Drones</a>
+      <a href="#" class="navbar-link">Contact</a>
+      <a href="#" class="navbar-link">Log In</a>
+    </div>
+  </div>
+
+  <div class="banner">
+    <div class="container">
+      <div class="d-flex flex-column">
+        <h1>Seamless Aerial Solutions.</h1>
+        <%# <p>Explore the skies effortlessly</p> %>
+      </div>
+    </div>
+  </div>
+
+  <h1>All Drones</h1>
+
+  <div class="container">
+    <div class="row">
+      <% @drones.each do |drone| %>
+        <div class="col-3 my-2">
+          <%= link_to(drone_path(drone)) do %>
+           <div class="d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
+             <div class="h-50">
+               <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= drone.model %>" class="w-100">
+             </div>
+             <div><h2><%= drone.model %></h2></div>
+             <div class="d-flex flex-grow-1 align-content-between flex-wrap">
+               <p><%= drone.description %></p>
+               <p><%= drone.price %>0 €/day</p>
+               <!-- Add more drone details here -->
+             </div>
+           </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>
