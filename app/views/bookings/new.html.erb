@@ -1,0 +1,20 @@
+<%#-- new booking --%>
+<body class="bg-black d-flex align-objects-center">
+  <div class="container h-100">
+    <div class="card rounded-4 bg-dark bg-opacity-50 text-secondary my-4">
+      <div class="d-flex justify-content-center align-items-center h-50">
+        <img class="" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture">
+      </div>
+      <div class="px-3">
+        <h2 class="my-3"><%= @drone.model %></h2>
+        <div class="my-3">
+          <%= simple_form_for [@drone, @booking] do |f| %>
+            <%= f.input :from_date %>
+            <%= f.input :to_date %>
+            <div class="btn btn-primary"><%= f.button :submit %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
