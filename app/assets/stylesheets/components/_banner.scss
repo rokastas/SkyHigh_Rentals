@@ -1,0 +1,30 @@
+.banner {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 800px;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+  background-image: url("https://content.fortune.com/wp-content/uploads/2015/04/solo_black_low.jpg");
+  background-size: auto 130%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.banner h1 {
+  margin: 0;
+  color: rgba(230, 230, 230, 0.788);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 80px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-align: center;
+}
