@@ -1,15 +1,9 @@
 class DashboardsController < ApplicationController
-  before_action :user_dashboard, only: [:dashboard]
+  def index
+    @user = current_user
 
-  def dashboard
-    # @user = current_user
-    # @user_booked_drones = @user.booked_drones.includes(:drone)
-  end
-
-  private
-
-  def user_dashboard
-    order_options = { 'bookings.user_id' => :asc }
-    @all_drones_grouped_by_user = Drone.includes(bookings: :user).order(order_options).group_by { |drone| drone.user }
+    @my_requests = Booking.where(drone: Drone.where(user: @user)).where(accepted: false)
+    @my_drones = Drone.where(user: @user)
+    @my_bookings = Booking.where(user: @user)
   end
 end
