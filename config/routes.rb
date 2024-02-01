@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'dashboards/user_dashboard'
-  get 'dashboards/owner_dashboard'
+  # get 'dashboards/user_dashboard' TODO: remove
+  # get 'dashboards/owner_dashboard' TODO: remove
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :drones, only: [:index, :show] do
     resources :bookings, only: [:new, :create]
   end
-  get '/dashboard', to: 'dashboards#dashboard', as: :dashboard
-    resources :bookings, only: [:edit, :update]
+  # get '/dashboard', to: 'dashboards#dashboard', as: :dashboard TODO: remove
+
+  resources :dashboards, only: [:index], path: "dashboard"
+
+  resources :bookings, only: [:edit, :update, :destroy]
+
 end
