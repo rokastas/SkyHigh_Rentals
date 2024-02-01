@@ -16,8 +16,8 @@ class DronesController < ApplicationController
   def create
     @drone = Drone.new(drone_params)
     @drone.user = current_user
-    if @drone.save
-      redirect_to dashboard_path # TODO: change to dashboards_path once merged
+    if @drone.save!
+      redirect_to dashboards_path
     else
       render :new, status: :unprocessable_entity
     end
