@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root "drones#index"
 
   # Defines the routes for the drones resource
-  resources :drones, only: [:index, :show] do
+  resources :drones, only: [:index, :show, :new, :create] do
     resources :bookings, only: [:new, :create]
   end
   get '/dashboard', to: 'dashboards#dashboard', as: :dashboard
