@@ -17,13 +17,14 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @booking = Booking.find(params[:id])
+    @drone = @booking.drone
   end
 
   def update
     @booking = Booking.find(params[:id])
     @booking.update(accepted: params[:accepted])
-
-    redirect_to dashboards_path
+    redirect_to dashboard_path, notice: 'Booking was successfully accepted.'
   end
 
   def destroy
@@ -36,6 +37,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:from_date, :to_date)
+    params.require(:booking).permit(:from_date, :to_date, :accepted)
   end
 end

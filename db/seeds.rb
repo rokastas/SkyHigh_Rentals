@@ -26,13 +26,17 @@ ActiveRecord::Base.connection.reset_pk_sequence!(User.table_name)
   )
 end
 
+drone_brands = ['DJI', 'Parrot', 'Autel Robotics', 'Yuneec', 'Skydio', 'Holy Stone', 'Ryze Tech', 'Hubsan']
+
 20.times do
+  drone_description = "#{Faker::Hacker.verb} #{Faker::Hacker.noun} with #{Faker::Hacker.adjective} features"
+
   Drone.create(
     price: rand(10..100),
-    brand: Faker::Vehicle.make,
+    brand: drone_brands.sample,
     model: Faker::Drone.name,
     time_in_air: rand(15..60),
-    description: Faker::Lorem.paragraph,
+    description: drone_description,
     weight: rand(100..1000),
     category: Drone::CATEGORY.sample,
     user: User.all.sample
