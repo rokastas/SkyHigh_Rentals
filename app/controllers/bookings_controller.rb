@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking.drone = @drone
     @booking.user = current_user
     if @booking.save
-      redirect_to dashboard_path
+      redirect_to dashboards_path
     else
       render :new
     end
@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(accepted: params[:accepted])
-    redirect_to dashboard_path, notice: 'Booking was successfully accepted.'
+    redirect_to dashboards_path, notice: 'Booking was successfully accepted.'
   end
 
   def destroy

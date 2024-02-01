@@ -1,36 +1,57 @@
-<div class="background-black-gradient">
-  <div class="container d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
+<div class="background-black-gradient h-100">
+  <div class="container d-flex flex-column rounded-4 bg-dark bg-opacity-50 text-secondary p-2 my-5">
     <%#-- drone card --%>
-    <div class="my-2 text-center">
-      <h2><%= @drone.model %></h2>
-
-      <div class="d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
-        <div class="h-50 mx-auto">
+      <div class="d-flex flex-row text-secondary p-3">
+        <div class="col-6 mx-auto">
            <%# <% if @drone.photo.attached? %>
               <%# <%= cl_image_tag @drone.photo.key, crop: :fill %>
            <%# <% else %>
-              <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="400">
+              <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="100%">
            <%# <% end %>
         </div>
-        <div class="mt-3">
 
-          <div class="card text-white bg-dark">
-            <div class="card-body text-center">
-              <p class="card-text">Brand: <%= @drone.brand %></p>
-              <p class="card-text">Description: <%= @drone.description %></p>
-              <p class="card-text">Price: <%= @drone.price %>0 €/day</p>
-              <p class="card-text">Flying Time: <%= @drone.time_in_air %> min</p>
-              <p class="card-text">Weight: <%= @drone.weight %> g</p>
-              <p class="card-text">Category: <%= @drone.category %></p>
-            </div>
+        <div class="card col-6 text-white bg-dark bg-opacity-50 p-2">
+          <div class="card-body text-start">
+            <h1><%= @drone.model %></h1>
+            <p class="card-text mt-3"><div class="text-uppercase font-weight-bold">Brand</div> <%= @drone.brand %></p>
+            <p class="card-text"><div class="text-uppercase font-weight-bold">Description</div> <%= @drone.description %></p>
+            <p class="card-text"><div class="text-uppercase font-weight-bold">Price</div> <%= @drone.price %>0 €/day</p>
+            <p class="card-text"><div class="text-uppercase font-weight-bold">Flying Time</div> <%= @drone.time_in_air %> min</p>
+            <p class="card-text"><div class="text-uppercase font-weight-bold">Weight</div> <%= @drone.weight %> g</p>
+            <p class="card-text "><div class="text-uppercase font-weight-bold">Category</div> <%= @drone.category %></p>
           </div>
+          <%= link_to new_drone_booking_path(@drone), class: "btn rounded-4 btn-secondary p-2 m-2" do %>
+            Book
+          <% end %>
         </div>
-
-        <div class="d-flex flex-column mt-3">
-
-          <div class="btn btn-outline-secondary p-2"><%= link_to 'Book', new_drone_booking_path(@drone) %></div>
+    </div>
+  </div>
+        <%# add suggestions %>
+  <div class="container">
+    <h2>We think you may also like</h2>
+    <h6>Category <span><%= @drone.category %></span></h6>
+    <div class="row my-3">
+      <% @same_category_drones.limit(4).each do |drone| %>
+        <div class="col-3 my-2">
+          <%= link_to(drone_path(drone)) do %>
+           <div class="d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
+             <div class="h-50">
+                   <%# <% if drone.photo.attached? %>
+                   <%# <%= cl_image_tag drone.photo.key, crop: :fill %>
+                   <%# <% else %>
+                   <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= drone.model %>" class="w-100">
+                   <%# <% end %>
+             </div>
+             <div><h2><%= drone.model %></h2></div>
+             <div class="d-flex flex-grow-1 align-content-between flex-wrap">
+               <p><%= drone.description %></p>
+               <p><%= drone.price %>0 €/day</p>
+               <!-- Add more drone details here -->
+             </div>
+           </div>
+          <% end %>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
