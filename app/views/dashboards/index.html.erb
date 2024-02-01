@@ -1,41 +1,85 @@
 <body class="background-black-gradient">
-
-  <%# <div class="banner"> %>
-    <%# <div class="container"> %>
-      <%# <div class="d-flex flex-column"> %>
-        <%# <h1>My Dashboard</h1> %>
-        <%# <p>Explore the skies effortlessly</p> %>
-      <%# </div> %>
-    <%# </div> %>
-  <%# </div> %>
   <div class="container">
     <h2>My Dashboard</h2>
+
+    <div class="mb-3">
+      <h4 class="py-2 text-light">My Bookings</h4>
+      <div class="row bg-dark rounded-4">
+        <% @my_bookings.each do |booking| %>
+          <div class="col-3 my-2">
+            <div class="card h-100 rounded-4 text-secondary bg-dark border-0">
+              <div class="card-body">
+                <div class="bg-secondary bg-opacity-50 rounded-4 mb-3">
+                  <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= booking.drone.model %>" class="w-100">
+                </div>
+                <h5 class="card-title"><%= booking.drone.model %></h5>
+                <div class="card-text">
+                  <div><strong>From:</strong> <%= booking.from_date %></div>
+                  <div><strong>To:</strong><%= booking.to_date %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="mb-3">
       <h4 class="py-2 text-light">Booking Requests</h4>
-      <div class="card row bg-dark">
+      <div class="row bg-dark p-0 rounded-4">
         <% @my_requests.each do |booking|%>
-          <div class="card bg-transparent">
-            <p>
-              <%= booking.user.first_name %>
-              <%= booking.from_date %>
-              <%= booking.to_date %>
-            </p>
-            <p>
-              Total: <%= ((booking.to_date - booking.from_date).to_i * booking.drone.price) %> EUR
-              <%= link_to "Accept", booking_path(booking, accepted: true), data: {turbo_method: :patch} %>
-              <%= link_to "Decline", booking_path(booking), data: {turbo_method: :delete} %>
-            </p>
+          <div class="col-3 my-2">
+            <div class="card h-100 rounded-4 text-secondary bg-dark border-0">
+              <div class="card-body">
+                <div class="bg-secondary bg-opacity-50 rounded-4 mb-3">
+                  <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="" class="w-100">
+                </div>
+                <h5 class="card-title"><%= booking.drone.brand %></h5>
+                <div class="card-text d-flex flex-column">
+                  <div><strong>Request from:</strong> <%= booking.user.first_name %> <%= booking.user.last_name %></div>
+                  <div><strong>From:</strong> <%= booking.from_date %></div>
+                  <div><strong>To:</strong><%= booking.to_date %></div>
+                </div>
+                <p>
+                Total: <%= ((booking.to_date - booking.from_date).to_i * booking.drone.price) %> EUR
+                <div>
+                  <%= link_to "Accept", booking_path(booking, accepted: true), data: {turbo_method: :patch} %>
+                  <%= link_to "Decline", booking_path(booking), data: {turbo_method: :delete} %>
+                </div>
+              </p>
+              </div>
+            </div>
           </div>
         <% end%>
       </div>
+    </div>
 
+    <div class="mb-3">
       <h4 class="py-2 text-light">My Drones</h4>
-      <div class="card row bg-dark">
-        TODO
+      <div class="row bg-dark rounded-4">
+        <% @my_drones.each do |drone| %>
+          <div class="col-3 my-2">
+            <div class="card h-100 rounded-4 text-secondary bg-dark border-0">
+              <div class="card-body">
+                <div class="bg-secondary bg-opacity-50 rounded-4 mb-3">
+                  <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= drone.model %>" class="w-100">
+                </div>
+                <h5 class="card-title"><%= drone.model %></h5>
+                <div class="card-text">
+                  <%= drone.brand %><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-3 my-2">
+          <div class="card h-100 rounded-4 text-secondary bg-dark border-0">
+            <div class="card-body">
+            + Add new drone
+            </div>
+          </div>
+        </div>
       </div>
-
-      <h4 class="py-2 text-light">My Bookings</h4>
-      <div class="card row bg-dark">
-        TODO
       </div>
   </div>
 </body>

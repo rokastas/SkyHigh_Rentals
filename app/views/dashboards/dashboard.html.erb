@@ -1,35 +1,69 @@
-<div class="background-black-gradient">
-
-  <div class="banner">
-    <div class="container">
-      <div class="d-flex flex-column">
-        <h1>Dashboard</h1>
-      </div>
-    </div>
-  </div>
-
- <div class="container">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
-    <% @all_drones_grouped_by_user.each do |user, drones| %>
-      <% drones.each do |drone| %>
-        <div class="col mb-4">
-          <div class="card h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
+<div class="h-100 background-black-gradient">
+  <!-- My bookings -->
+  <div class="mx-5 py-4">
+    <h2>My bookings</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-start bg-dark rounded-4">
+      <% @user_bookings.each do |booking| %>
+        <div class="col my-2">
+          <div class="card h-100 rounded-4 text-secondary bg-dark">
             <div class="card-body">
-              <h5 class="card-title">User: <%= user.first_name %> <%= user.last_name %></h5>
-              <div class="card-text">
-                <strong>Model:</strong> <%= drone.model %><br>
-                <strong>Description:</strong> <%= drone.description %><br>
-                <strong>Category:</strong> <%= drone.category %><br>
-                <strong>Price:</strong> <%= drone.price %><br>
-                <strong>Time in Air:</strong> <%= drone.time_in_air %><br>
-                <strong>Weight:</strong> <%= drone.weight %><br>
+              <div class="bg-secondary bg-opacity-50 rounded-4 mb-3">
+                <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="" class="w-100">
+              </div>
+              <h5 class="card-title"><%= booking.drone.model %></h5>
+              <div class="d-flex flex-column card-text">
+                <div><strong>From:</strong>   <%= booking.from_date %></div>
+                <div><strong>To:</strong>   <%= booking.to_date %></div>
               </div>
             </div>
           </div>
         </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
 
+  <!-- Booking requests -->
+  <div class="mx-5 py-4">
+    <h2>Booking requests</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-start bg-dark rounded-4">
+      <% @my_drones_bookings.each do |booking| %>
+        <div class="col my-2">
+          <div class="card h-100 rounded-4 text-secondary bg-dark">
+            <div class="card-body">
+              <div class="bg-secondary bg-opacity-50 rounded-4 mb-3">
+                <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="" class="w-100">
+              </div>
+              <!-- <h5 class="card-title"><%= drone.brand %></h5> -->
+              <div class="card-text">
+                <%= booking.from_date %><br>
+                <%= booking.to_date %><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- My drones -->
+  <div class="mx-5 py-4">
+    <h2>My drones</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-start bg-dark rounded-4">
+      <% @user_drones.each do |drone| %>
+        <div class="col my-2">
+          <div class="card h-100 rounded-4 text-secondary bg-dark">
+            <div class="card-body">
+              <div class="bg-secondary bg-opacity-50 rounded-4 mb-3">
+                <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= drone.model %>" class="w-100">
+              </div>
+              <h5 class="card-title"><%= drone.model %></h5>
+              <div class="card-text">
+                <%= drone.brand %><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
