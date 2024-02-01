@@ -20,6 +20,17 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    @booking.update(accepted: params[:accepted])
+
+    redirect_to dashboards_path
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.delete
+
+    redirect_to dashboards_path
   end
 
   private

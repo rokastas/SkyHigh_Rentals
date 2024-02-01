@@ -1,5 +1,4 @@
 class DashboardsController < ApplicationController
-  before_action :user_dashboard, only: [:dashboard]
 
   def dashboard
     @user = current_user
@@ -18,12 +17,11 @@ class DashboardsController < ApplicationController
       # @bookings_of_my_drones = current_user.booked_drone_ids
   end
 
-  private
+  def index
+    @user = current_user
 
-  def user_dashboard
-    order_options = { 'bookings.user_id' => :asc }
-    @all_drones_grouped_by_user = Drone.includes(bookings: :user).order(order_options).group_by { |drone| drone.user }
+    @my_drones = Drone.where(user: @user)
+    @my_bookings = Booking.where(drone: Drone.where(user: @user))
+    @my_requests = @my_bookings.where(accepted: false)
   end
 end
-
-# filter bookings by

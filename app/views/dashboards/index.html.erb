@@ -1,0 +1,33 @@
+<body class="background-black-gradient">
+
+  <div class="container">
+    <h2>My Dashboard</h2>
+      <h4 class="py-2 text-light">Booking Requests</h4>
+      <div class="card row bg-dark">
+        <% @my_requests.each do |booking|%>
+          <div class="card bg-transparent">
+            <p>
+              <%= booking.user.first_name %>
+              <%= booking.from_date %>
+              <%= booking.to_date %>
+            </p>
+            <p>
+              Total: <%= ((booking.to_date - booking.from_date).to_i * booking.drone.price) %> EUR
+              <%= link_to "Accept", booking_path(booking, accepted: true), data: {turbo_method: :patch} %>
+              <%= link_to "Decline", booking_path(booking), data: {turbo_method: :delete} %>
+            </p>
+          </div>
+        <% end%>
+      </div>
+
+      <h4 class="py-2 text-light">My Drones</h4>
+      <div class="card row bg-dark">
+        TODO
+      </div>
+
+      <h4 class="py-2 text-light">My Bookings</h4>
+      <div class="card row bg-dark">
+        TODO
+      </div>
+  </div>
+</body>
