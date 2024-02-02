@@ -29,6 +29,21 @@
             </div>
           </div>
         <% end %>
+
+        <% if @my_bookings.empty? %>
+          <div class="col-3 mt-2">
+            <div class="card rounded-4 text-secondary bg-dark border-0 mb-0">
+              <div class="card-body m-0 px-2 pb-0 pt-2">
+                <div class="bg-secondary bg-opacity-25 rounded-4 mb-3">
+                  <div style="height: 275px;" class="d-flex justify-content-center align-items-center">
+                    <div class="">No bookings yet</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
     <!-- MY BOOKINGS -->
@@ -111,17 +126,17 @@
         <% end %>
 
         <div class="col-3 my-2">
-          <div class="card h-100 rounded-4 text-secondary bg-dark border-0">
+          <div class="card rounded-4 text-secondary bg-dark border-0">
             <div class="card-body m-0 px-2 pb-0 pt-2">
-              <div class="h-75 bg-secondary bg-opacity-25 rounded-4 mb-3">
+              <div class="bg-secondary bg-opacity-25 rounded-4">
                 <%= link_to new_drone_path do %>
-                  <div class="h-100 d-flex justify-content-center align-items-center mb-3">
+                  <div style="height: 295px;" class="d-flex justify-content-center align-items-center">
                     <div class="display-1">+</div>
                   </div>
                 <% end %>
-                <h5 class="card-title">Add a new drone</h5>
               </div>
             </div>
+                <h5 class="card-title py-0 px-2 mx-0 mt-3 mb-2">Add a new drone</h5>
           </div>
         </div>
 
