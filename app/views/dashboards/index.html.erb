@@ -14,7 +14,7 @@
                    <% if booking.drone.photo.attached? %>
                      <%= cl_image_tag booking.drone.photo.key, crop: :fill, class: "rounded-4 w-100 h-100" %>
                    <% else %>
-                     <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= drone.model %>" class="w-100">
+                     <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= booking.drone.model %>" class="w-100">
                    <% end %>
                 </div>
                 <h5 class="card-title"><%= booking.drone.model %></h5>
