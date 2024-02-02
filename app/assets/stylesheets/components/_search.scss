@@ -17,23 +17,24 @@ body {
   padding: 15px;
 }
 
-
-.selectpicker {
-  background-color: #333;
-  border: 1px solid #555;
+.form-control {
+  color: #ece7e7;
 }
 
-.form-control,
-.form-control::placeholder,
-.selectpicker,
-.selectpicker::placeholder {
-  color: #d9d9d9;
+
+.form-control::placeholder {
+  color: #ece7e7;
 }
 
 .form-control:focus,
-.selectpicker:focus {
-  color: #141414;
+.form-control:focus::placeholder {
+  color: #111111;
 }
+
+// .selectpicker,
+// .selectpicker::placeholder {
+//   color: #0f0f0f !important;
+// }
 
 
 .btn-primary {
@@ -41,7 +42,7 @@ body {
   border-color: #f3f5f7;
   border-radius: 26px;
   margin-left: 5px;
-  padding: 15px;
+  padding: 12px;
   border: none;
 
 }
