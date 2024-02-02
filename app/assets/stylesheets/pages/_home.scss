@@ -8,3 +8,9 @@ p, h2, a {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   text-decoration: none;
 }
+
+.card-title {
+  height: 2em; // that's one line, 2em for 2 lines, etc...
+  line-height: 1em; // the height of one text line
+  overflow: hidden;
+}
