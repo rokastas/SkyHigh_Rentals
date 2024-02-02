@@ -4,9 +4,9 @@
 
     <!-- MY BOOKINGS -->
     <div class="mb-5">
-      <h4 class="py-2 text-light">My Bookings</h4>
+      <h4 class="py-2 text-light">Upcoming Bookings</h4>
       <div class="row bg-dark rounded-4">
-        <% @my_bookings.each do |booking| %>
+        <% @my_bookings.to_a.sort!{ |a, b| a.from_date <=> b.from_date }.each do |booking| %>
           <div class="col-3 mt-2">
             <div class="card h-100 rounded-4 text-secondary bg-dark border-0">
               <div class="card-body">
@@ -33,16 +33,31 @@
             </div>
           </div>
         <% end %>
+
+        <% if @my_bookings.empty? %>
+          <div class="col-3 mt-2">
+            <div class="card rounded-4 text-secondary bg-dark border-0 mb-0">
+              <div class="card-body m-0 px-2 pb-0 pt-2">
+                <div class="bg-secondary bg-opacity-25 rounded-4 mb-3">
+                  <div style="height: 275px;" class="d-flex justify-content-center align-items-center">
+                    <div class="">No bookings yet</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
     <!-- MY BOOKINGS -->
 
     <!-- BOOKING REQUESTS -->
     <div class="mb-5">
-      <h4 class="py-2 text-light">Booking Requests</h4>
+      <h4 class="py-2 text-light">Bookings for my Drones</h4>
       <div class="row bg-dark p-0 rounded-4">
 
-        <% @my_requests.each do |booking|%>
+        <% @my_requests.to_a.sort!{ |a, b| a.from_date <=> b.from_date }.each do |booking|%>
           <div class="col-3 my-2">
             <div class="card-body m-0 px-2 pb-0 pt-2 h-100 rounded-4 text-secondary bg-dark border-0">
               <div class="card-body">
@@ -60,18 +75,20 @@
                   <div><strong>To: </strong><%= booking.to_date.strftime('%Y-%m-%d') %></div>
                 </div>
                 <p>
-                Total: <%= ((booking.to_date - booking.from_date).to_i * booking.drone.price) %> EUR
+                Total: <%= ((booking.to_date.to_date - booking.from_date.to_date).to_i * booking.drone.price) %> EUR
                 <div class="d-flex flex-row">
-                  <%= link_to booking_path(booking, accepted: true), data: {turbo_method: :patch} do %>
-                    <div class="text-success">Accept</div>
+                  <% if booking.accepted%>
+                    <%= link_to booking_path(booking), data: {turbo_method: :delete} do %>
+                      <div class="text-danger">Cancel Booking</div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to booking_path(booking, accepted: true), data: {turbo_method: :patch} do %>
+                      <div class="text-success">Accept</div>
+                    <% end %>
+                    <%= link_to booking_path(booking), data: {turbo_method: :delete} do %>
+                      <div class="text-danger mx-2">Decline</div>
+                    <% end %>
                   <% end %>
-                  <%= link_to booking_path(booking), data: {turbo_method: :delete} do %>
-                    <div class="text-danger mx-2">Decline</div>
-                  <% end %>
-                  <!--
-                    <%= link_to "Accept", booking_path(booking, accepted: true), data: {turbo_method: :patch} %>
-                    <%= link_to "Decline", booking_path(booking), data: {turbo_method: :delete} %>
-                  -->
                 </div>
               </p>
               </div>
@@ -85,7 +102,7 @@
               <div class="card-body m-0 px-2 pb-0 pt-2">
                 <div class="bg-secondary bg-opacity-25 rounded-4 mb-3">
                   <div style="height: 275px;" class="d-flex justify-content-center align-items-center">
-                    <div class="">No new requests</div>
+                    <div class="">No drones booked</div>
                   </div>
                 </div>
               </div>
@@ -123,17 +140,17 @@
         <% end %>
 
         <div class="col-3 my-2">
-          <div class="card h-100 rounded-4 text-secondary bg-dark border-0">
+          <div class="card rounded-4 text-secondary bg-dark border-0">
             <div class="card-body m-0 px-2 pb-0 pt-2">
-              <div class="h-75 bg-secondary bg-opacity-25 rounded-4 mb-3">
+              <div class="bg-secondary bg-opacity-25 rounded-4">
                 <%= link_to new_drone_path do %>
-                  <div class="h-100 d-flex justify-content-center align-items-center mb-3">
+                  <div style="height: 295px;" class="d-flex justify-content-center align-items-center">
                     <div class="display-1">+</div>
                   </div>
                 <% end %>
-                <h5 class="card-title">Add a new drone</h5>
               </div>
             </div>
+                <h5 class="card-title py-0 px-2 mx-0 mt-3 mb-2">Add a new drone</h5>
           </div>
         </div>
 
