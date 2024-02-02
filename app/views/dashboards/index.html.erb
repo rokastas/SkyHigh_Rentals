@@ -21,11 +21,11 @@
                 <div class="card-text">
                   <div><strong>From: </strong> <%= booking.from_date.strftime('%Y-%m-%d') %></div>
                   <div><strong>To: </strong><%= booking.to_date.strftime('%Y-%m-%d') %></div>
-                  <div class="pt-2"><strong>Status: </strong><%=
+                  <div class="pt-2"><%=
                     if booking.accepted
-                      "Accepted"
+                      "Confirmed"
                     else
-                      "Pending"
+                      "Waiting for confirmation"
                     end
                   %></div>
                 </div>
