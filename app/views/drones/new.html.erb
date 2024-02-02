@@ -32,10 +32,7 @@
                 <%= f.input :category, collection: Drone::CATEGORY %>
               </div>
               <div class="mt-auto">
-                <%= link_to dashboards_path, class: "" do %>
-                  <!-- <div class="btn btn-primary"><%= f.button :submit %></div> -->
-                  <%= f.submit 'Add', class: "btn w-100 rounded-4 btn-secondary p-2 mt-3" %>
-                <% end %>
+                <%= f.submit 'Add', class: "btn w-100 rounded-4 btn-secondary p-2 mt-3" %>
               </div>
             </div>
           <% end %>
