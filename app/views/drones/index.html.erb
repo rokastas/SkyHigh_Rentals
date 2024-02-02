@@ -13,29 +13,31 @@
     <div class="row justify-content-center">
       <div class="col-sm-8 mt-2">
         <%= form_with(method: :get, class: "d-flex") do |form| %>
-          <div class="input-group">
-            <%= select_tag :category,
-                  options_for_select(Drone.distinct.pluck(:category).compact, params[:category]),
-                  include_blank: "All Categories",
-                  class: "form-control"
-              %>
-          </div>
-          <div class="input-group">
-            <%= text_field_tag :min_price,
-                  params[:min_price],
-                  placeholder: "Min Price",
-                  class: "form-control"
-              %>
-          </div>
-          <div class="input-group">
-            <%= text_field_tag :max_price,
-                  params[:max_price],
-                  placeholder: "Max Price",
-                  class: "form-control"
-              %>
-          </div>
+            <div class="input-group">
+              <%= select_tag :category,
+                    options_for_select(Drone.distinct.pluck(:category).compact, params[:category]),
+                    include_blank: "Category",
+                    class: "form-control"
+                %>
+            </div>
+            <div class="input-group">
+              <%= text_field_tag :min_price,
+                    params[:min_price],
+                    placeholder: "Min Price",
+                    class: "form-control"
+                %>
+            </div>
+            <div class="input-group">
+              <%= text_field_tag :max_price,
+                    params[:max_price],
+                    placeholder: "Max Price",
+                    class: "form-control"
+                %>
+            </div>
             <div class="input-group-append">
-              <button type="submit" class="btn btn-primary">Search</button>
+              <button type="submit" class="btn btn-primary">
+                <img src="<%= asset_path('search.svg') %>" alt="Search">
+              </button>
             </div>
           </div>
         <% end %>
