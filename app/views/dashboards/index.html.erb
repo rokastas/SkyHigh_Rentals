@@ -3,7 +3,7 @@
     <h2 class="text-center mb-5">My Dashboard</h2>
 
     <!-- MY BOOKINGS -->
-    <div class="mb-4">
+    <div class="mb-5">
       <h4 class="py-2 text-light">My Bookings</h4>
       <div class="row bg-dark rounded-4">
         <% @my_bookings.each do |booking| %>
@@ -13,11 +13,11 @@
                 <div class="bg-secondary bg-opacity-25 rounded-4 mb-3">
                   <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= booking.drone.model %>" class="w-100">
                 </div>
-                <h4 class="card-title"><%= booking.drone.model %></h4>
+                <h5 class="card-title"><%= booking.drone.model %></h5>
                 <div class="card-text">
-                  <div><strong>From:</strong> <%= booking.from_date.strftime('%Y-%m-%d') %></div>
-                  <div><strong>To:</strong><%= booking.to_date.strftime('%Y-%m-%d') %></div>
-                  <div class="pt-2"><strong>Status:</strong><%=
+                  <div><strong>From: </strong> <%= booking.from_date.strftime('%Y-%m-%d') %></div>
+                  <div><strong>To: </strong><%= booking.to_date.strftime('%Y-%m-%d') %></div>
+                  <div class="pt-2"><strong>Status: </strong><%=
                     if booking.accepted
                       "Accepted"
                     else
@@ -34,9 +34,10 @@
     <!-- MY BOOKINGS -->
 
     <!-- BOOKING REQUESTS -->
-    <div class="mb-4">
+    <div class="mb-5">
       <h4 class="py-2 text-light">Booking Requests</h4>
       <div class="row bg-dark p-0 rounded-4">
+
         <% @my_requests.each do |booking|%>
           <div class="col-3 my-2">
             <div class="card-body m-0 px-2 pb-0 pt-2 h-100 rounded-4 text-secondary bg-dark border-0">
@@ -46,9 +47,9 @@
                 </div>
                 <h5 class="card-title"><%= booking.drone.model %></h5>
                 <div class="card-text d-flex flex-column">
-                  <div><strong>Request from:</strong> <%= booking.user.first_name %> <%= booking.user.last_name %></div>
-                  <div><strong>From:</strong> <%= booking.from_date.strftime('%Y-%m-%d') %></div>
-                  <div><strong>To:</strong><%= booking.to_date.strftime('%Y-%m-%d') %></div>
+                  <div><strong>Request from: </strong> <%= booking.user.first_name %> <%= booking.user.last_name %></div>
+                  <div><strong>From: </strong> <%= booking.from_date.strftime('%Y-%m-%d') %></div>
+                  <div><strong>To: </strong><%= booking.to_date.strftime('%Y-%m-%d') %></div>
                 </div>
                 <p>
                 Total: <%= ((booking.to_date - booking.from_date).to_i * booking.drone.price) %> EUR
@@ -69,13 +70,29 @@
             </div>
           </div>
         <% end%>
+
+        <% if @my_requests.empty? %>
+          <div class="col-3 mt-2">
+            <div class="card rounded-4 text-secondary bg-dark border-0 mb-0">
+              <div class="card-body m-0 px-2 pb-0 pt-2">
+                <div class="bg-secondary bg-opacity-25 rounded-4 mb-3">
+                  <div style="height: 275px;" class="d-flex justify-content-center align-items-center">
+                    <div class="">No new requests</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
     <!-- BOOKING REQUESTS -->
 
     <!-- MY DRONES -->
-    <div class="mb-4">
+    <div class="mb-5">
       <h4 class="py-2 text-light">My Drones</h4>
+
       <div class="row bg-dark rounded-4">
         <% @my_drones.each do |drone| %>
           <div class="col-3 my-2">
@@ -102,11 +119,12 @@
                     <div class="display-1">+</div>
                   </div>
                 <% end %>
-                <h5 class="card-title">Add new drone</h5>
+                <h5 class="card-title">Add a new drone</h5>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
     <!-- MY DRONES -->
