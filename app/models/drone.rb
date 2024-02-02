@@ -1,4 +1,5 @@
 class Drone < ApplicationRecord
+  has_one_attached :photo
   CATEGORY = %w[Racing Freestyle Cinematic Photography Other]
 
   belongs_to :user

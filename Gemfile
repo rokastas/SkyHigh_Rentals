@@ -2,6 +2,10 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+# Adding Photos
+gem "cloudinary"
+gem 'open-uri'
+
 # Authentification
 gem "devise"
 

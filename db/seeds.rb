@@ -28,10 +28,25 @@ end
 
 drone_brands = ['DJI', 'Parrot', 'Autel Robotics', 'Yuneec', 'Skydio', 'Holy Stone', 'Ryze Tech', 'Hubsan']
 
+drone_img = ['https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874252/Drone_2_wuszpf.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874252/Drone_5_aqhtdc.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874250/Drone_10_phyzmn.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874251/Drone_6_zzmduw.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874250/Drone_7_jwlbno.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874250/9_xbdoiy.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874248/drone_11_nux0uv.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874247/drone_12_mwhly4.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874247/drone_13_gzrces.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874247/drone_13_gzrces.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874245/drone_16_zggkpa.jpg',
+              'https://res.cloudinary.com/dmlxmpwua/image/upload/v1706874246/drone_15_tq1w6u.jpg']
+
+
+
 20.times do
   drone_description = "#{Faker::Hacker.verb} #{Faker::Hacker.noun} with #{Faker::Hacker.adjective} features"
 
-  Drone.create(
+  drone = Drone.create(
     price: rand(10..100),
     brand: drone_brands.sample,
     model: Faker::Drone.name,
@@ -41,6 +56,9 @@ drone_brands = ['DJI', 'Parrot', 'Autel Robotics', 'Yuneec', 'Skydio', 'Holy Sto
     category: Drone::CATEGORY.sample,
     user: User.all.sample
   )
+
+  file = URI.parse(drone_img.sample).open
+  drone.photo.attach(io: file, filename: "drone_image.png", content_type: "image/jpeg")
 end
 
 30.times do
