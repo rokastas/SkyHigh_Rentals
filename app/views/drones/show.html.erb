@@ -36,8 +36,8 @@
           <%= link_to(drone_path(drone)) do %>
            <div class="d-flex flex-column h-100 rounded-4 bg-dark bg-opacity-50 text-secondary p-2">
              <div class="h-50">
-           <% if @drone.photo.attached? %>
-              <%= cl_image_tag @drone.photo.key, crop: :fill, class: "rounded-4 w-100 h-100" %>
+           <% if drone.photo.attached? %>
+              <%= cl_image_tag drone.photo.key, crop: :fill, class: "rounded-4 w-100 h-100" %>
            <% else %>
               <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="100%">
            <% end %>
