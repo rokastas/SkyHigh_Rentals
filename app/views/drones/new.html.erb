@@ -3,11 +3,11 @@
     <div class="d-flex flex-row text-secondary p-3">
 
       <div class="col-6 my-auto">
-          <%# <% if @drone.photo.attached? %>
-            <%# <%= cl_image_tag @drone.photo.key, crop: :fill %>
-          <%# <% else %>
+          <% if @drone.photo.attached? %>
+                     <%= cl_image_tag @drone.photo.key, crop: :fill, class: "rounded-4 w-100 h-100" %>
+          <% else %>
             <img class="img-fluid" src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="Drone Picture" width="100%">
-          <%# <% end %>
+          <% end %>
       </div>
 
       <div class="card col-6 text-white bg-dark bg-opacity-50 p-2">
@@ -30,6 +30,8 @@
                 <%= f.input :weight, input_html: { placeholder: "450 g" }  %>
                 <div class="my-2"><%= f.label :category, "CATEGORY:" %></div>
                 <%= f.input :category, collection: Drone::CATEGORY %>
+                <div class="my-2"><%= f.label :photo, "IMG:" %></div>
+                <%= f.input :photo, as: :file, input_html: {placeholder: "Your File"}   %>
               </div>
               <div class="mt-auto">
                 <%= f.submit 'Add', class: "btn w-100 rounded-4 btn-secondary p-2 mt-3" %>
