@@ -17,22 +17,22 @@
             <div class="h-100 d-flex flex-column">
               <div>
                 <div class="my-2"><%= f.label :brand, "BRAND:" %></div>
-                <%= f.input :brand, input_html: { placeholder: "DJI" }  %>
+                <%= f.input :brand, input_html: { placeholder: "DJI", style: 'background-color: #292929; color: #ffffff;' } %>
                 <div class="my-2"><%= f.label :model, "MODEL:" %></div>
-                <%= f.input :model, input_html: { placeholder: "Nimbus 3000" }  %>
+                <%= f.input :model, input_html: { placeholder: "Nimbus 3000", style: 'background-color: #292929; color: #ffffff;' }  %>
                 <div class="my-2"><%= f.label :price, "PRICE PER DAY:" %></div>
-                <%= f.input :price, input_html: { placeholder: "30 €" } %>
+                <%= f.input :price, input_html: { placeholder: "30 €", style: 'background-color: #292929; color: #ffffff;' } %>
                 <div class="my-2"><%= f.label :time_in_air, "TIME IN AIR:" %></div>
-                <%= f.input :time_in_air, input_html: { placeholder: "45 min" }  %>
+                <%= f.input :time_in_air, input_html: { placeholder: "45 min", style: 'background-color: #292929; color: #ffffff;' }  %>
                 <div class="my-2"><%= f.label :description, "DESCRIPTION:" %></div>
-                <%= f.input :description, input_html: { placeholder: "Fast drone with great camera capabilities" }  %>
+                <%= f.input :description, input_html: { placeholder: "Fast drone with great camera capabilities", style: 'background-color: #292929; color: #ffffff;' }  %>
                 <div class="my-2"><%= f.label :weight, "WEIGHT:" %></div>
-                <%= f.input :weight, input_html: { placeholder: "450 g" }  %>
+                <%= f.input :weight, input_html: { placeholder: "450 g", style: 'background-color: #292929; color: #ffffff;' }  %>
                 <div class="my-2"><%= f.label :category, "CATEGORY:" %></div>
-                <%= f.input :category, collection: Drone::CATEGORY %>
+                <%= f.input :category, collection: Drone::CATEGORY, input_html: { class: 'btn rounded-5 text-light text-start', style: 'background-color: #292929; height: 50px; color: #ffffff;' } %>
               </div>
               <div class="mt-auto">
-                <%= f.submit 'Add', class: "btn w-100 rounded-4 btn-secondary p-2 mt-3" %>
+                <%= f.submit 'Add', class: "btn w-100 rounded-5 btn-light p-2 mt-3", input_html: { style: 'height: 50px;' } %>
               </div>
             </div>
           <% end %>
