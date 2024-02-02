@@ -1,5 +1,5 @@
 <%#-- new booking --%>
-<div class="background-black-gradient h-100 d-flex align-objects-center">
+<div class="background-black-gradient h-100 ">
   <div class="container d-flex flex-column rounded-4 bg-dark bg-opacity-50 text-secondary p-2 my-5">
     <div class="d-flex flex-row text-secondary p-3">
 
@@ -18,12 +18,12 @@
             <div class="h-100 d-flex flex-column">
               <div>
                 <div class="my-2"><%= f.label :from_date, "FROM:" %></div>
-                <%= f.input :from_date, as: :string, input_html: { data: { controller: "datepicker" }, placeholder: Date.today.strftime('%Y-%m-%d') } %>
+                <%= f.input :from_date, as: :string, input_html: { data: { controller: "datepicker" }, placeholder: Date.today.strftime('%Y-%m-%d'), style: 'background-color: #292929;' } %>
                 <div class="mt-4 mb-2"><%= f.label :from_date, "TO:" %></div>
-                <%= f.input :to_date, as: :string, input_html: { data: { controller: "datepicker" }, placeholder: Date.today.strftime('%Y-%m-%d') } %>
+                <%= f.input :to_date, as: :string, input_html: { data: { controller: "datepicker" }, placeholder: Date.today.strftime('%Y-%m-%d'), style: 'background-color: #292929;' } %>
               </div>
               <div class="mt-auto">
-                <%= f.submit 'Book', class: "btn w-100 rounded-4 btn-secondary p-2" %>
+                <%= f.submit 'Book', class: "btn w-100 rounded-4 btn-light p-2" %>
               </div>
             </div>
           <% end %>
