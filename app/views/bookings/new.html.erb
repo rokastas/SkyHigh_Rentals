@@ -23,9 +23,7 @@
                 <%= f.input :to_date, as: :string, input_html: { data: { controller: "datepicker" }, placeholder: Date.today.strftime('%Y-%m-%d') } %>
               </div>
               <div class="mt-auto">
-                <%= link_to dashboards_path, class: "" do %>
-                  <%= f.submit 'Book', class: "btn w-100 rounded-4 btn-secondary p-2" %>
-                <% end %>
+                <%= f.submit 'Book', class: "btn w-100 rounded-4 btn-secondary p-2" %>
               </div>
             </div>
           <% end %>
