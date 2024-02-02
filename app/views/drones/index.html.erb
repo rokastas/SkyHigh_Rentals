@@ -57,10 +57,10 @@
                    <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= drone.model %>" class="w-100">
                    <%# <% end %>
              </div>
-             <div><h2><%= drone.model %></h2></div>
-             <div class="d-flex flex-grow-1 align-content-between flex-wrap">
+             <div><h2 class="card-title"><%= drone.model %></h2></div>
+             <div class="d-flex flex-column flex-grow-1 align-content-between flex-wrap">
                <p><%= drone.description %></p>
-               <p><%= drone.price %>0 €/day</p>
+               <p class="mt-auto"><%= drone.price %>0 €/day</p>
                <!-- Add more drone details here -->
              </div>
            </div>
