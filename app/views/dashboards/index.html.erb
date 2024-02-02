@@ -10,7 +10,7 @@
           <div class="col-3 mt-2">
             <div class="card h-100 rounded-4 text-secondary bg-dark border-0">
               <div class="card-body">
-                <div class="bg-secondary bg-opacity-50 rounded-4 mb-3 h-75">
+                <div class="bg-secondary bg-opacity-50 rounded-4 mb-3 h-50">
                    <% if booking.drone.photo.attached? %>
                      <%= cl_image_tag booking.drone.photo.key, crop: :fill, class: "rounded-4 w-100 h-100" %>
                    <% else %>
@@ -21,7 +21,7 @@
                 <div class="card-text">
                   <div><strong>From: </strong> <%= booking.from_date.strftime('%Y-%m-%d') %></div>
                   <div><strong>To: </strong><%= booking.to_date.strftime('%Y-%m-%d') %></div>
-                  <div class="pt-2"><%=
+                  <div class="pt-2 mb-2"><%=
                     if booking.accepted
                       "Confirmed"
                     else
