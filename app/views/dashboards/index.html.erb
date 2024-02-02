@@ -62,8 +62,8 @@
             <div class="card-body m-0 px-2 pb-0 pt-2 h-100 rounded-4 text-secondary bg-dark border-0">
               <div class="card-body">
                 <div class="bg-secondary bg-opacity-50 rounded-4 mb-3 h-75">
-                   <% if booking.photo.attached? %>
-                     <%= cl_image_tag booking.photo.key, crop: :fill, class: "rounded-4 w-100 h-100" %>
+                   <% if booking.drone.photo.attached? %>
+                     <%= cl_image_tag booking.drone.photo.key, crop: :fill, class: "rounded-4 w-100 h-100" %>
                    <% else %>
                      <img src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="<%= drone.model %>" class="w-100">
                    <% end %>
