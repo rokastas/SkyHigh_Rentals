@@ -52,7 +52,7 @@
                   <div><strong>To: </strong><%= booking.to_date.strftime('%Y-%m-%d') %></div>
                 </div>
                 <p>
-                Total: <%= ((booking.to_date - booking.from_date).to_i * booking.drone.price) %> EUR
+                Total: <%= ((booking.to_date.to_date - booking.from_date.to_date).to_i * booking.drone.price) %> EUR
                 <div class="d-flex flex-row">
                   <%= link_to booking_path(booking, accepted: true), data: {turbo_method: :patch} do %>
                     <div class="text-success">Accept</div>
